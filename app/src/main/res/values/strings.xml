@@ -2,7 +2,7 @@
     <string name="app_name">DarkFlix</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
     <string name="load_movies">Load Movies</string>
     <string name="name">Name</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -17,4 +17,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_home_list">HomeList</string>
+    <string name="under_development">Under Development</string>
+    <string name="test_title">Thunivu</string>
+    <string name="tab_2">Tab 2</string>
+    <string name="tab_3">Tab 3</string>
+    <string name="tab_1">Tab 1</string>
 </resources>

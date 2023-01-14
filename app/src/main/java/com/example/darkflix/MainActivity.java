@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 
 import com.example.darkflix.ui.dashboard.DashboardFragment;
 import com.example.darkflix.ui.home.HomeFragment;
-import com.example.darkflix.ui.notifications.NotificationsFragment;
+import com.example.darkflix.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentList.add(new HomeFragment());
         fragmentList.add(new DashboardFragment());
-        fragmentList.add(new NotificationsFragment());
+        fragmentList.add(new ProfileFragment());
 
         bottomNavView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_dashboard:
                     setFragment(fragmentList.get(1));
                     return  true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_profile:
                     setFragment(fragmentList.get(2));
                     return  true;
                 default:
