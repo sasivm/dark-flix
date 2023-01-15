@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true
+        this.retainInstance = true
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -160,6 +160,8 @@ class HomeFragment : Fragment() {
             val ls: JSONArray = jObj.getJSONArray("results")
             val movList:ArrayList<MovieSearchModel> = ArrayList()
 
+            val DEFAULT_VALUE = ""
+
             for (i in 0 until ls.length()) {
                 val obj = ls.getJSONObject(i)
                 val search = MovieSearchModel()
@@ -170,6 +172,16 @@ class HomeFragment : Fragment() {
                 search.backdrop_path = obj.getString("backdrop_path")
                 search.vote_average = obj.getString("vote_average")
                 search.overview = obj.getString("overview")
+                if(obj.has("release_date")) {
+                    search.release_date = obj.getString("release_date")
+                } else {
+                    search.release_date = DEFAULT_VALUE
+                }
+                if(obj.has("popularity")) {
+                    search.popularity = obj.getString("popularity")
+                } else {
+                    search.popularity = DEFAULT_VALUE
+                }
                 if (isTypeMovie) {
                     search.title = obj.getString("title")
                 } else {

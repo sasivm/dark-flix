@@ -43,7 +43,7 @@ public class GroupListAdapter extends RecyclerView.Adapter<GroupListAdapter.View
 
 //        Here 2nd Recycle view called
         ArrayList<ArrayList<MovieSearchModel>> ls = MovieSearchRepo.getList();
-        MovsRecyclerViewAdapter adapter = new MovsRecyclerViewAdapter(activity, ls.get(position));
+        MovsRecyclerViewAdapter adapter = new MovsRecyclerViewAdapter(activity, position, ls.get(position));
         LinearLayoutManager layoutManager = new LinearLayoutManager(activity);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         holder.recyclerView.setLayoutManager(layoutManager);

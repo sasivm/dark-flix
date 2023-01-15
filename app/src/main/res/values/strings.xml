@@ -22,4 +22,9 @@
     <string name="tab_2">Tab 2</string>
     <string name="tab_3">Tab 3</string>
     <string name="tab_1">Tab 1</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="test_geners_list">Action Adveture Comedy</string>
+    <string name="test_movie_title">Thunivu</string>
 </resources>

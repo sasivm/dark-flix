@@ -1,11 +1,29 @@
 package com.example.darkflix.Model;
 
+import androidx.annotation.NonNull;
+
 public class MovieSearchModel {
-    private String title, poster_path, backdrop_path, vote_average, overview, name, type;
+    private String title, poster_path, backdrop_path, vote_average, overview, name, type, release_date, popularity;
     private int id;
 
     public String getName() {
         return name;
+    }
+
+    public String getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public String getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(String popularity) {
+        this.popularity = popularity;
     }
 
     public void setName(String name) {
@@ -20,6 +38,7 @@ public class MovieSearchModel {
         this.type = type;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "MovSearch{" +

@@ -1,6 +1,8 @@
 package com.example.darkflix.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterInside;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.darkflix.Model.MovieSearchModel;
+import com.example.darkflix.MovieDetailActivity;
 import com.example.darkflix.R;
 import com.example.darkflix.Utility.AppConstants;
 
@@ -24,10 +27,12 @@ public class MovsRecyclerViewAdapter extends RecyclerView.Adapter<MovsRecyclerVi
 
     Context context;
     List<MovieSearchModel> movsModelArrayList;
+    int parentPostion;
 
-   public MovsRecyclerViewAdapter(Context context, List<MovieSearchModel> movsModelArrayList) {
+   public MovsRecyclerViewAdapter(Context context, int parentPostion, List<MovieSearchModel> movsModelArrayList) {
        this.movsModelArrayList = movsModelArrayList;
        this.context = context;
+       this.parentPostion = parentPostion;
    }
 
    @NonNull
@@ -42,7 +47,7 @@ public class MovsRecyclerViewAdapter extends RecyclerView.Adapter<MovsRecyclerVi
        MovieSearchModel movie = movsModelArrayList.get(position);
        holder.rate.setText(movie.getVote_average());
        String type = movie.getType();
-       if(type == AppConstants.SHOWS_TYPE) {
+       if(type.equals(AppConstants.SHOWS_TYPE)) {
            holder.title.setText(movie.getName());
        } else {
            holder.title.setText(movie.getTitle());
@@ -52,6 +57,18 @@ public class MovsRecyclerViewAdapter extends RecyclerView.Adapter<MovsRecyclerVi
                .transform(new CenterInside(), new RoundedCorners(100))
                .fitCenter().into(holder.imageView);
 
+       holder.imageView.setOnClickListener(v -> {
+           // When you're inside the click listener interface,
+           // you can access the position using the ViewHolder.
+           // We'll store the position in the member variable in this case.
+           Log.i(" Selected Item Here", holder.getAdapterPosition() + "");
+           Log.i("parentPostion ", parentPostion + "");
+           Log.i("onClick: ", movsModelArrayList.get(holder.getAdapterPosition()).toString());
+           Intent intent = new Intent(context, MovieDetailActivity.class);
+           intent.putExtra("PARENT_IDX", parentPostion + "");
+           intent.putExtra("CHILD_IDX", holder.getAdapterPosition() + "");
+           context.startActivity(intent);
+       });
    }
 
    @Override
@@ -59,15 +76,15 @@ public class MovsRecyclerViewAdapter extends RecyclerView.Adapter<MovsRecyclerVi
        return movsModelArrayList.size();
    }
 
-static class ViewHolder extends RecyclerView.ViewHolder {
-   TextView rate, title;
-   ImageView imageView;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+       TextView rate, title;
+       ImageView imageView;
 
-   public ViewHolder(@NonNull View itemView) {
-       super(itemView);
-       rate = itemView.findViewById(R.id.mov_rate);
-       title = itemView.findViewById(R.id.mov_title);
-       imageView = itemView.findViewById(R.id.mov_img);
-   }
-}
+       public ViewHolder(@NonNull View itemView) {
+           super(itemView);
+           rate = itemView.findViewById(R.id.mov_rate);
+           title = itemView.findViewById(R.id.mov_title);
+           imageView = itemView.findViewById(R.id.mov_img);
+       }
+    }
 }
