@@ -8,5 +8,5 @@ public class AppConstants {
 
     public static final String POSTER_PATH_PREFIX = "https://image.tmdb.org/t/p/w220_and_h330_face";
 
-    public static final String MOVIESDB_APIKEY = "a6372208be8115e77f05da30622b4465"; // Write your MOVIESDB API_KEY here.
+    public static final String MOVIESDB_APIKEY = ""; // Write your MOVIESDB API_KEY here.
 }

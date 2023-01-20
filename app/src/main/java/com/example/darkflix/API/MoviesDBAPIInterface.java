@@ -1,15 +1,14 @@
 package com.example.darkflix.API;
 
 import com.example.darkflix.Model.GenreModel;
+import com.example.darkflix.Model.MovieModel;
 
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -29,4 +28,7 @@ public interface MoviesDBAPIInterface {
 
     @GET("discover/movie")
     Observable<ResponseBody> getMoviesByReg(@Query("with_original_language") String language, @Query("api_key") String name);
+
+    @GET("movie/{movie_id}")
+    Call<MovieModel> getMovieDetails(@Path("movie_id") int id, @Query("api_key") String name);
 }

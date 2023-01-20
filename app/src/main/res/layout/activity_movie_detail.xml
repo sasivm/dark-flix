@@ -62,16 +62,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:paddingRight="25dp"
             android:paddingTop="15dp"
+            android:paddingRight="25dp"
             android:paddingBottom="15dp">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_today_24"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/baseline_today_24" />
 
             <TextView
                 android:id="@+id/mov_det_date"
@@ -93,11 +93,18 @@
                 android:id="@+id/mov_det_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
                 android:layout_weight="1"
-                android:text="TextView"
+                android:paddingLeft="20dp"
                 android:textColor="?attr/colorCatHeaderPrimary" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/mov_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:text="TextView" />
 
     </LinearLayout>
 
