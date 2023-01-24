@@ -7,6 +7,7 @@ public class AppConstants {
     public static final String FIND_LANG_MOVIE_TYPE = "FIND_MOVIE";
 
     public static final String POSTER_PATH_PREFIX = "https://image.tmdb.org/t/p/w220_and_h330_face";
+    public static final String ORIGINAL_PATH_PREFIX = "https://image.tmdb.org/t/p/original/";
 
     public static final String MOVIESDB_APIKEY = ""; // Write your MOVIESDB API_KEY here.
 }

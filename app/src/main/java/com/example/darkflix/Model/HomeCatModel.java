@@ -6,6 +6,7 @@ public class HomeCatModel {
     private String rqeType;
     private String reqState;
     private String orgLang;
+    private String reqRegion;
 
     public HomeCatModel(String listTitle, String listType, String rqeType, String reqState) {
         this.listTitle = listTitle;
@@ -14,12 +15,13 @@ public class HomeCatModel {
         this.reqState = reqState;
     }
 
-    public HomeCatModel(String listTitle, String listType, String rqeType, String reqState, String orgLang) {
+    public HomeCatModel(String listTitle, String listType, String rqeType, String reqState, String orgLang, String reqRegion) {
         this.listTitle = listTitle;
         this.listType = listType;
         this.rqeType = rqeType;
         this.reqState = reqState;
         this.orgLang = orgLang;
+        this.reqRegion = reqRegion;
     }
 
     public String getListTitle() {
@@ -57,4 +59,8 @@ public class HomeCatModel {
     public String getOrgLang() { return orgLang; }
 
     public void setOrgLang(String orgLang) { this.orgLang = orgLang; }
+
+    public String getReqRegion() { return reqRegion; }
+
+    public void setReqRegion(String reqRegion) { this.reqRegion = reqRegion; }
 }

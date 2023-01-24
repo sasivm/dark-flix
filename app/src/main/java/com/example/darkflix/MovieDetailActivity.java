@@ -15,6 +15,8 @@ import com.example.darkflix.Model.MovieModel;
 import com.example.darkflix.Model.MovieSearchModel;
 import com.example.darkflix.Repository.MovieSearchRepo;
 import com.example.darkflix.Utility.AppConstants;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import java.io.IOException;
 
@@ -25,10 +27,11 @@ import retrofit2.Response;
 
 public class MovieDetailActivity extends AppCompatActivity {
     TextView title, release_date, duration, overview;
-    int parentIdx, childIdx;
+    ChipGroup pChipGroup;
     ImageView poster;
     MovieModel movie;
     String TYPE;
+    int parentIdx, childIdx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         duration = findViewById(R.id.mov_det_time);
         poster = findViewById(R.id.mov_det_backdrop);
         overview = findViewById(R.id.mov_overview);
+        pChipGroup = findViewById(R.id.genreGroup);
 
         MovieSearchModel movie = MovieSearchRepo.getList().get(parentIdx).get(childIdx);
         TYPE = movie.getType();
@@ -85,7 +89,19 @@ public class MovieDetailActivity extends AppCompatActivity {
         release_date.setText(movie.getRelease_date());
         duration.setText(String.valueOf(movie.getRuntime()));
         overview.setText(movie.getOverview());
-        String poster_full_url = AppConstants.POSTER_PATH_PREFIX + movie.getBackdrop_path();
+        String poster_full_url = AppConstants.ORIGINAL_PATH_PREFIX + movie.getBackdrop_path();
         Glide.with(this).load(poster_full_url).fitCenter().into(poster);
+        addChip();
+    }
+
+    private void addChip() {
+        for(int i = 0; i < movie.getGenres().length; i++) {
+            String name = movie.getGenres()[i].getName();
+            Chip lChip = new Chip(this);
+            lChip.setText(name);
+    //      lChip.setTextColor(getResources().getColor(R.color.rating_icon_light));
+    //      lChip.setChipBackgroundColor(getResources().getColorStateList(R.color.chip_bg));
+            pChipGroup.addView(lChip, pChipGroup.getChildCount() - 1);
+        }
     }
 }

@@ -54,8 +54,7 @@ public class MovsRecyclerViewAdapter extends RecyclerView.Adapter<MovsRecyclerVi
        }
        String poster_url = AppConstants.POSTER_PATH_PREFIX + movie.getPoster_path();
        Glide.with(holder.imageView).load(poster_url)
-               .transform(new CenterInside(), new RoundedCorners(100))
-               .fitCenter().into(holder.imageView);
+               .transform(new CenterInside(), new RoundedCorners(25)).into(holder.imageView);
 
        holder.imageView.setOnClickListener(v -> {
            // When you're inside the click listener interface,

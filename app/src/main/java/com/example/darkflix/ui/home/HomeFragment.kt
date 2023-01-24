@@ -50,10 +50,11 @@ class HomeFragment : Fragment() {
             homeReqList = ArrayList()
 
             // Lang wise
-            homeReqList.add(HomeCatModel("Tamil Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "ta"))
-            homeReqList.add(HomeCatModel("Telugu Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "te"))
-            homeReqList.add(HomeCatModel("Malayalam Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "ml"))
-            homeReqList.add(HomeCatModel("Kannada Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "kn"))
+            homeReqList.add(HomeCatModel("Tamil Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "ta", "in"))
+            homeReqList.add(HomeCatModel("Tamil Movies Upcoming", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "upcoming", "ta","in"))
+            homeReqList.add(HomeCatModel("Telugu Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "te", "in"))
+            homeReqList.add(HomeCatModel("Malayalam Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "ml", "in"))
+            homeReqList.add(HomeCatModel("Kannada Movies", AppConstants.FIND_LANG_MOVIE_TYPE, "movie", "now_playing", "kn", "in"))
 
             homeReqList.add(HomeCatModel("Trending Movies", AppConstants.MOVIE_TYPE, "movie", "now_playing"))
             homeReqList.add(HomeCatModel("Trending TV Shows", AppConstants.SHOWS_TYPE, "tv", "on_the_air"))
@@ -81,8 +82,10 @@ class HomeFragment : Fragment() {
 
         for (i in 0 until homeReqList.size) {
             val req = homeReqList[i]
-            if(req.listType == AppConstants.FIND_LANG_MOVIE_TYPE) {
+            if(req.reqRegion == null || req.reqRegion.trim() == "") {
                 requests.add(apiInterface.getMoviesByReg(req.orgLang, AppConstants.MOVIESDB_APIKEY))
+            } else if(req.listType == AppConstants.FIND_LANG_MOVIE_TYPE) {
+                requests.add(apiInterface.getTopCustomMovies(req.rqeType, req.reqState, req.orgLang, req.reqRegion, AppConstants.MOVIESDB_APIKEY))
             } else {
                 requests.add(apiInterface.getSearchList(req.rqeType, req.reqState, AppConstants.MOVIESDB_APIKEY))
             }
